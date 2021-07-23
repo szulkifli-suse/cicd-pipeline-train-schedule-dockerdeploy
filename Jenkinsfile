@@ -69,10 +69,9 @@ pipeline {
             }
             steps {
             sh """
-            git clone https://github.com/szulkifli-suse/fleet-examples.git --branch=master 
-            cd fleet-examples/simple/
-            pwd
-            sed -i "s/train-schedule:12/train-schedule:${env.BUILD_NUMBER}/g" frontend-deployment.yaml
+            git clone https://github.com/szulkifli-suse/fleet-examples.git --branch=master /tmp/built_${env.BUILD_NUMBER}
+            cd /tmp/built_${env.BUILD_NUMBER}/fleet-examples/simple/
+            sed -i "s/train-schedule:*/train-schedule:${env.BUILD_NUMBER}/g" frontend-deployment.yaml
             cat frontend-deployment.yaml
             git add .
             git commit -m "Commit new changes"
