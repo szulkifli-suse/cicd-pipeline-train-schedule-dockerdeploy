@@ -71,6 +71,7 @@ pipeline {
             sh """
             git clone https://github.com/szulkifli-suse/fleet-examples.git --branch=master 
             cd fleet-examples/simple/
+            pwd
             sed -i "s/train-schedule:12/train-schedule:${env.BUILD_NUMBER}/g" frontend-deployment.yaml
             cat frontend-deployment.yaml
             git add .
