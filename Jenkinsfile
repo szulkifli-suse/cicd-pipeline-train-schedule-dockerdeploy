@@ -1,14 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Build Java App') {
             steps {
                 echo 'Running build automation'
                 sh './gradlew build --no-daemon'
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        stage('Build Docker Image') {
+        stage('Create Docker Image') {
             when {
                 branch 'master'
             }
@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker Image to Git') {
+        stage('Push Docker Image to GitRepo') {
             when {
                 branch 'master'
             }
@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-        stage('Approval to Deploy for Staging Environment') {
+        stage('Approval for Staging Env Deployment') {
             when {
                 branch 'master'
             }
@@ -44,7 +44,7 @@ pipeline {
             }
         
         }
-        stage('DeployToStaging') {
+        stage('Deploy To Staging') {
             when {
                 branch 'master'
             }
@@ -63,7 +63,17 @@ pipeline {
                 }
             }
         }
-         stage('Push to GitOps for Rancher') {
+        stage('Application Smoke/Sanity Test') {
+            when {
+                branch 'master'
+            }
+            steps {
+               input 'Deploy to Production Environment?'
+               milestone(1)
+            }
+        
+        }
+         stage('Push Apps Image to Rancher GitOps') {
             when {
                 branch 'master'
             }
