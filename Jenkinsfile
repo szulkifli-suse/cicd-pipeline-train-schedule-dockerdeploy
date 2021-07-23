@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker Image to GitRepo') {
+        stage('Push Docker Image to GitHub') {
             when {
                 branch 'master'
             }
