@@ -18,16 +18,16 @@
 			]
 		},
 		{
-			"name": "Flying Scotsman",
+			"name": "SUSE Rancher Express",
 			"stops": [
 				{
-					"station": "Pine",
+					"station": "Germany",
 					"status": "ON-TIME",
 					"arrival": "12:00pm",
 					"departure": "12:10pm"
 				},
 				{
-					"station": "Sycamore",
+					"station": "Kuala Lumpur",
 					"status": "DELAYED",
 					"arrival": "1:00pm",
 					"departure": "1:10pm",
