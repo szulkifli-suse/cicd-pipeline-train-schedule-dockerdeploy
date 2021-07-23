@@ -69,7 +69,6 @@ pipeline {
             }
             steps {
                input 'Deploy to Production Environment?'
-               milestone(1)
             }
         
         }
