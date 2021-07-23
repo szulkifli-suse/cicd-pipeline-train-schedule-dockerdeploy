@@ -63,6 +63,21 @@ pipeline {
                 }
             }
         }
-
+        stage('Push to GitOps for Rancher') {
+            when {
+                branch 'master'
+            }
+            steps {
+            git clone https://github.com/szulkifli-suse/fleet-examples.git --branch=master 
+            #finish cloning
+            cd fleet-examples/simple/
+            sed -i "s/train-schedule:12/train-schedule:${env.BUILD_NUMBER}/g" frontend-deployment.yaml
+            cat frontend-deployment.yaml
+            git add .
+            git commit -m "Commit new changes"
+            git remote set-url origin https://github.com/szulkifli-suse/fleet-examples.git
+            git push origin master
+             
+            }
     }
 }
