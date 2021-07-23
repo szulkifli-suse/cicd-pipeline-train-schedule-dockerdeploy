@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker Image') {
+        stage('Push Docker Image to Git') {
             when {
                 branch 'master'
             }
@@ -34,13 +34,21 @@ pipeline {
                 }
             }
         }
+        stage('Approval to Deploy for Staging Environment') {
+            when {
+                branch 'master'
+            }
+            steps {
+               input 'Deploy to Staging Environment?'
+               milestone(1)
+            }
+        
+        }
         stage('DeployToStaging') {
             when {
                 branch 'master'
             }
             steps {
-                input 'Deploy to Staging Environment?'
-                milestone(1)
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
                         sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@122.248.200.22 \"docker pull darkwunan/train-schedule:${env.BUILD_NUMBER}\""
@@ -55,5 +63,6 @@ pipeline {
                 }
             }
         }
+
     }
 }
