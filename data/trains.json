@@ -21,13 +21,13 @@
 			"name": "Flying Scotsman",
 			"stops": [
 				{
-					"station": "SUSE",
+					"station": "Pine",
 					"status": "ON-TIME",
 					"arrival": "12:00pm",
 					"departure": "12:10pm"
 				},
 				{
-					"station": "RANCHER",
+					"station": "Sycamore",
 					"status": "DELAYED",
 					"arrival": "1:00pm",
 					"departure": "1:10pm",
