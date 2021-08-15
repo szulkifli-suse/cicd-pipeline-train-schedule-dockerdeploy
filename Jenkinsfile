@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        GIT = credentials('rancher')
+    }
     stages {
         stage('Build Java App') {
             steps {
@@ -84,7 +87,7 @@ pipeline {
             cat frontend-deployment.yaml
             git add .
             git commit -m "Commit new changes"
-            git remote set-url origin https://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@github.com/szulkifli-suse/fleet-examples.git
+            git remote set-url origin https://$GIT@github.com/szulkifli-suse/fleet-examples.git
             git push origin master
             """
             }
