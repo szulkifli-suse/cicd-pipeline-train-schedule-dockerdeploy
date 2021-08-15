@@ -84,7 +84,8 @@ pipeline {
             cat frontend-deployment.yaml
             git add .
             git commit -m "Commit new changes"
-            git remote set-url origin https://szulkifli-suse:12September2020**@github.com/szulkifli-suse/fleet-examples.git
+            //git remote set-url origin https://szulkifli-suse:12September2020**@github.com/szulkifli-suse/fleet-examples.git
+            git remote set-url origin https://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@github.com/szulkifli-suse/fleet-examples.git
             git push origin master
             """
             }
