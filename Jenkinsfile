@@ -43,7 +43,7 @@ pipeline {
             }
             steps {
                input 'Deploy to Staging Environment?'
-               milestone(1)
+               //milestone(1)
             }
         
         }
