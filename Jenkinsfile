@@ -38,8 +38,13 @@ pipeline {
             }
         }
             stage('Scan image') {
+                 when {
+                branch 'master'
+            }
+            steps {
              neuvector registrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanTimeout: 10, tag: 'latest'
              }
+        }
         stage('Approval for Staging Env Deployment') {
             when {
                 branch 'master'
