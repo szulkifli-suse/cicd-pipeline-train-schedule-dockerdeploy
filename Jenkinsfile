@@ -42,7 +42,7 @@ pipeline {
                 branch 'master'
             }
         steps {  
-        neuvector egistrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanTimeout: 10, tag: 'latest'
+        neuvector registrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanTimeout: 10, tag: 'latest'
             }
         }
         stage('Approval for Staging Env Deployment') {
