@@ -37,6 +37,14 @@ pipeline {
                 }
             }
         }
+        stage('Neuvector Scan image') {
+            when {
+                branch 'master'
+            }
+        steps {  
+        neuvector egistrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanTimeout: 10, tag: 'latest'
+            }
+        }
         stage('Approval for Staging Env Deployment') {
             when {
                 branch 'master'
