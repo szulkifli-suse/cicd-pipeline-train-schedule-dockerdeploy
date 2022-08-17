@@ -24,6 +24,14 @@ pipeline {
                 }
             }
         }
+        stage('Neuvector Scan image') {
+            when {
+                branch 'master'
+            }
+        steps {  
+        neuvector nameOfVulnerabilityToExemptFour: '', nameOfVulnerabilityToExemptOne: '', nameOfVulnerabilityToExemptThree: '', nameOfVulnerabilityToExemptTwo: '', nameOfVulnerabilityToFailFour: '', nameOfVulnerabilityToFailOne: '', nameOfVulnerabilityToFailThree: '', nameOfVulnerabilityToFailTwo: '', numberOfHighSeverityToFail: '50', numberOfMediumSeverityToFail: '50', registrySelection: 'Local', repository: 'darkwunan/train-schedule', scanLayers: true, scanTimeout: 10, tag: 'latest'
+            }
+        }
         stage('Push Docker Image to Repository') {
             when {
                 branch 'master'
@@ -45,14 +53,6 @@ pipeline {
         neuvector registrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanTimeout: 10, tag: 'latest'
             }
         }*/
-        stage('Neuvector Scan image') {
-            when {
-                branch 'master'
-            }
-        steps {  
-        neuvector nameOfVulnerabilityToExemptFour: '', nameOfVulnerabilityToExemptOne: '', nameOfVulnerabilityToExemptThree: '', nameOfVulnerabilityToExemptTwo: '', nameOfVulnerabilityToFailFour: '', nameOfVulnerabilityToFailOne: '', nameOfVulnerabilityToFailThree: '', nameOfVulnerabilityToFailTwo: '', numberOfHighSeverityToFail: '50', numberOfMediumSeverityToFail: '50', registrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanLayers: true, scanTimeout: 10, tag: 'latest'
-            }
-        }
         stage('Approval for Staging Env Deployment') {
             when {
                 branch 'master'
