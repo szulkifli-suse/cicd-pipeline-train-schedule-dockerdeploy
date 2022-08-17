@@ -37,12 +37,20 @@ pipeline {
                 }
             }
         }
-        stage('Neuvector Scan image') {
+        /*stage('Neuvector Scan registry') {
             when {
                 branch 'master'
             }
         steps {  
         neuvector registrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanTimeout: 10, tag: 'latest'
+            }
+        }*/
+        stage('Neuvector Scan image') {
+            when {
+                branch 'master'
+            }
+        steps {  
+        neuvector nameOfVulnerabilityToExemptFour: '', nameOfVulnerabilityToExemptOne: '', nameOfVulnerabilityToExemptThree: '', nameOfVulnerabilityToExemptTwo: '', nameOfVulnerabilityToFailFour: '', nameOfVulnerabilityToFailOne: '', nameOfVulnerabilityToFailThree: '', nameOfVulnerabilityToFailTwo: '', numberOfHighSeverityToFail: '5', numberOfMediumSeverityToFail: '5', registrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanLayers: true, scanTimeout: 10, tag: 'latest'
             }
         }
         stage('Approval for Staging Env Deployment') {
