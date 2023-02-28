@@ -50,7 +50,7 @@ pipeline {
                 branch 'master'
             }
         steps {  
-        neuvector nameOfVulnerabilityToExemptFour: '', nameOfVulnerabilityToExemptOne: '', nameOfVulnerabilityToExemptThree: '', nameOfVulnerabilityToExemptTwo: '', nameOfVulnerabilityToFailFour: '', nameOfVulnerabilityToFailOne: '', nameOfVulnerabilityToFailThree: '', nameOfVulnerabilityToFailTwo: '', numberOfHighSeverityToFail: '50', numberOfMediumSeverityToFail: '50', registrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanLayers: true, scanTimeout: 10, tag: 'latest'
+        neuvector nameOfVulnerabilityToExemptFour: '', nameOfVulnerabilityToExemptOne: '', nameOfVulnerabilityToExemptThree: '', nameOfVulnerabilityToExemptTwo: '', nameOfVulnerabilityToFailFour: '', nameOfVulnerabilityToFailOne: '', nameOfVulnerabilityToFailThree: '', nameOfVulnerabilityToFailTwo: '', numberOfHighSeverityToFail: '100', numberOfMediumSeverityToFail: '100', registrySelection: 'darkwunan', repository: 'darkwunan/train-schedule', scanLayers: true, scanTimeout: 10, tag: 'latest'
             }
         }
         stage('Approval for Staging Env Deployment') {
